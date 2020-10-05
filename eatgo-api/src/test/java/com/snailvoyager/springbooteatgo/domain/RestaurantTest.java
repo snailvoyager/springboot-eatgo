@@ -8,14 +8,15 @@ class RestaurantTest {
 
     @Test
     public void creation() {
-        Restaurant restaurant = new Restaurant("Bab zip", "Seoul");
+        Restaurant restaurant = new Restaurant(1004L, "Bab zip", "Seoul");
+        assertThat(restaurant.getId()).isEqualTo(1004L);
         assertThat(restaurant.getName()).isEqualTo("Bab zip");
         assertThat(restaurant.getAddress()).isEqualTo("Seoul");
     }
 
     @Test
     public void information(){
-        Restaurant restaurant = new Restaurant("Bab zip", "Seoul");
+        Restaurant restaurant = new Restaurant(1004L,"Bab zip", "Seoul");
         assertThat(restaurant.getInformation()).isEqualTo("Bab zip in Seoul");
     }
 }

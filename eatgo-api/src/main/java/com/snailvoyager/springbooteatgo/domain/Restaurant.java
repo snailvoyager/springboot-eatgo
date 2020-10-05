@@ -4,13 +4,15 @@ public class Restaurant {
 
     private final String name;
     private final String address;
+    private final Long id;
 
-    public Restaurant(String name, String address) {
+    public Restaurant(Long id, String name, String address) {
         this.name = name;
         this.address = address;
+        this.id = id;
     }
     public String getName() {
-        return "Bab zip";
+        return name;
     }
 
     public String getInformation() {
@@ -19,5 +21,9 @@ public class Restaurant {
 
     public String getAddress() {
         return address;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
