@@ -1,9 +1,12 @@
 package com.snailvoyager.springbooteatgo.interfaces;
 
+import com.snailvoyager.springbooteatgo.domain.RestaurantRepository;
+import com.snailvoyager.springbooteatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,6 +20,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class RestaurantControllerTest {
     @Autowired
     private MockMvc mvc;
+
+    @SpyBean(RestaurantRepositoryImpl.class)    //Test에서 사용할 수 있도록 의존성 주입
+    private RestaurantRepository restaurantRepository;
 
     @Test
     public void list() throws Exception {
