@@ -1,5 +1,8 @@
 package com.snailvoyager.springbooteatgo.interfaces;
 
+import com.snailvoyager.springbooteatgo.application.RestaurantService;
+import com.snailvoyager.springbooteatgo.domain.MenuItemRepository;
+import com.snailvoyager.springbooteatgo.domain.MenuItemRepositoryImpl;
 import com.snailvoyager.springbooteatgo.domain.RestaurantRepository;
 import com.snailvoyager.springbooteatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
@@ -24,6 +27,12 @@ class RestaurantControllerTest {
     @SpyBean(RestaurantRepositoryImpl.class)    //Test에서 사용할 수 있도록 의존성 주입
     private RestaurantRepository restaurantRepository;
 
+    @SpyBean(MenuItemRepositoryImpl.class)
+    private MenuItemRepository menuItemRepository;
+
+    @SpyBean(RestaurantService.class)
+    private RestaurantService restaurantService;
+
     @Test
     public void list() throws Exception {
         mvc.perform(get("/restaurants"))
@@ -37,7 +46,8 @@ class RestaurantControllerTest {
         mvc.perform(get("/restaurants/1004"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("\"id\":1004")))
-                .andExpect(content().string(containsString("\"name\":\"Bab zip\"")));
+                .andExpect(content().string(containsString("\"name\":\"Bab zip\"")))
+                .andExpect(content().string(containsString("Kimchi")));
 
         mvc.perform(get("/restaurants/2020"))
                 .andExpect(status().isOk())
