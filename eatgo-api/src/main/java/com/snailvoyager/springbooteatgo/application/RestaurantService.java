@@ -25,8 +25,7 @@ public class RestaurantService {
     }
 
     public List<Restaurant> getRestaurants() {
-        List<Restaurant> restaurants = restaurantRepository.findAll();
-        return restaurants;
+        return restaurantRepository.findAll();
     }
 
     public Restaurant getRestaurant(Long id){
@@ -38,6 +37,7 @@ public class RestaurantService {
         return restaurant;
     }
 
-    public void addRestaurant(Restaurant restaurant) {
+    public Restaurant addRestaurant(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
     }
 }
